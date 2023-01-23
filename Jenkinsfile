@@ -10,29 +10,6 @@
 // 	}
 // }
 
-// pipeline{
-// 	agent any
-
-// 	stages{
-// 		stage{
-// 			step('Build in Declartive stage'){
-// 		echo "Build in Declartive"}
-// 	}
-// 	stage{
-// 		step('Test in Declartive stage'){
-// 			echo "Test in Declartive"
-// 		}
-		
-// 	}
-// 	stage{
-// 		step('Integration Test in Declartive stage'){
-// 			echo "Integration Test in Declartive"
-// 		}
-		
-// 	}
-// 	}
-// }
-
 pipeline {
     agent any
     stages {
@@ -46,10 +23,22 @@ pipeline {
                 echo "Test in Declartive"
             }
         }
-        stage(‘Build’) {
+        stage('Build') {
             steps {
                 sh 'docker --version'
             }
         }
     }
+
+	post{
+		always{
+			echo 'Single qoute and run always'
+		}
+		success{
+			echo "Double quote and if all stages pass"
+		}
+		failure{
+			echo 'If something is messed up'
+		}
+	}
 }
