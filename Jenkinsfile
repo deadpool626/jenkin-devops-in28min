@@ -46,7 +46,7 @@
 // }
 
 pipeline {
-    agent { docker { image 'aditya626/hello-world-python' } }
+    agent { docker { image 'aditya626/hello-world-python:0.0.1.RELEASE' } }
     stages {
         stage('Build in Declartive stage') {
             steps {
