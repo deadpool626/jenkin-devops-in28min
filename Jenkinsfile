@@ -46,7 +46,7 @@
 // }
 
 pipeline {
-    agent { docker { image 'aditya626/hello-world-python:0.0.1.RELEASE' } }
+    agent { docker { image 'aditya626/hello-world-python:0.0.1.RELEASE'} }
     stages {
         stage('Build in Declartive stage') {
             steps {
@@ -61,9 +61,6 @@ pipeline {
         stage('Code') {
             steps {
                 sh 'python --version'
-				sh 'python'
-				sh 'print(5+4)'
-				sh 'exit()'
             }
         }
     }
