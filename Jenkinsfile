@@ -10,43 +10,8 @@
 // 	}
 // }
 
-// pipeline {
-//     agent any
-//     stages {
-//         stage('Build in Declartive stage') {
-//             steps {
-//                 echo "Build in Declartive"
-//             }
-//         }
-//         stage('Test in Declartive stage') {
-//             steps {
-//                 echo "Test in Declartive"
-//             }
-//         }
-//         stage('Build') {
-//             steps {
-//                 sh 'docker --version'
-//             }
-//         }
-//     }
-
-// 	post{
-// 		always{
-// 			echo 'Single qoute and run always'
-// 		}
-// 		success{
-// 			echo "Double quote and if all stages pass"
-// 		}
-// 		failure{
-// 			echo 'If something is messed up'
-// 		}
-// 		// changed
-// 		// unstable
-// 	}
-// }
-
 pipeline {
-    agent { docker { image 'aditya626/hello-world-python:0.0.1.RELEASE'} }
+    agent any
     stages {
         stage('Build in Declartive stage') {
             steps {
@@ -55,12 +20,13 @@ pipeline {
         }
         stage('Test in Declartive stage') {
             steps {
+				echo 'PATH - $PATH'
                 echo "Test in Declartive"
             }
         }
-        stage('Code') {
+        stage('Build') {
             steps {
-                sh 'python --version'
+                sh 'docker --version'
             }
         }
     }
@@ -79,3 +45,38 @@ pipeline {
 		// unstable
 	}
 }
+
+// pipeline {
+//     agent { docker { image 'aditya626/hello-world-python:0.0.1.RELEASE'} }
+//     stages {
+//         stage('Build in Declartive stage') {
+//             steps {
+//                 echo "Build in Declartive"
+//             }
+//         }
+//         stage('Test in Declartive stage') {
+//             steps {
+//                 echo "Test in Declartive"
+//             }
+//         }
+//         stage('Code') {
+//             steps {
+//                 sh 'python --version'
+//             }
+//         }
+//     }
+
+// 	post{
+// 		always{
+// 			echo 'Single qoute and run always'
+// 		}
+// 		success{
+// 			echo "Double quote and if all stages pass"
+// 		}
+// 		failure{
+// 			echo 'If something is messed up'
+// 		}
+// 		// changed
+// 		// unstable
+// 	}
+// }
