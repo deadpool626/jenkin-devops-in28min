@@ -46,7 +46,7 @@
 // }
 
 pipeline {
-    agent { docker { image 'maven:3.8.7' } }
+    agent { docker { image 'aditya626/hello-world-python' } }
     stages {
         stage('Build in Declartive stage') {
             steps {
@@ -58,9 +58,12 @@ pipeline {
                 echo "Test in Declartive"
             }
         }
-        stage('Build') {
+        stage('Code') {
             steps {
-                sh 'mvn --version'
+                sh 'python --version'
+				sh 'python'
+				sh 'print(5+4)'
+				sh 'exit()'
             }
         }
     }
