@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Test in Declartive stage') {
             steps {
-				echo 'PATH - $PATH'
+				echo "PATH - $PATH"
                 echo "Test in Declartive"
             }
         }
