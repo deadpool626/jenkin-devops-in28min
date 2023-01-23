@@ -46,7 +46,7 @@
 // }
 
 pipeline {
-    agent { docker { image 'maven 3.8.7' } }
+    agent { docker { image 'maven:3.8.7' } }
     stages {
         stage('Build in Declartive stage') {
             steps {
