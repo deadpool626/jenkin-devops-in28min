@@ -31,6 +31,18 @@ pipeline {
                 sh 'mvn --version'
             }
         }
+        stage('Test1 - mvn test'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+
+        stage('Test2 - Integration Test'){
+            steps{
+                sh 'mvn failsafe:integration-test failsafe:verify'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'docker --version'
