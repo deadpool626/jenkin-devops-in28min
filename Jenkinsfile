@@ -48,6 +48,27 @@ pipeline {
                 sh 'docker --version'
             }
         }
+
+        stage('Build Docker Image'){
+            steps{
+                //"docker build -t in28min/currency-exchange-devops:$env.BUILD_TAG"
+                script{
+                    dockerImage = docker.build("aditya626/currency-exchange-devops:${env.BUILD_TAG}")
+                }
+            }
+        }
+
+        stage('Push Docker Image in DockerRepo'){
+            steps{
+                    docker.withRegistry('', 'dee64dc0-2100-4007-95b0-48b9d2676a3e'){
+                        dockerImage.push();
+                        dockerImage.push('latest');
+                    }
+                    
+                }
+            }
+        }
+
     }
 
 	post{
