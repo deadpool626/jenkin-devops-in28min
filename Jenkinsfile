@@ -27,6 +27,8 @@ pipeline {
             steps {
 				echo "PATH - $PATH"
                 echo "Test in Declartive"
+                sh 'docker version'
+                sh 'mvn --version'
             }
         }
         stage('Build') {
