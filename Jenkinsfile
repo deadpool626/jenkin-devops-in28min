@@ -60,11 +60,14 @@ pipeline {
 
         stage('Push Docker Image in DockerRepo'){
             steps{
+                script{
+                
                     docker.withRegistry('', 'dee64dc0-2100-4007-95b0-48b9d2676a3e'){
                         dockerImage.push();
                         dockerImage.push('latest');
                     }
-                    
+                
+                }    
                 }
             }
         }
