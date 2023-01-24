@@ -12,6 +12,11 @@
 
 pipeline {
     agent any
+    environment{
+        dockerHome = tool firstDocker
+        mavenHome = tool firstMaven
+        PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+    }
     stages {
         stage('Build in Declartive stage') {
             steps {
