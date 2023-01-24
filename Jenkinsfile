@@ -84,7 +84,6 @@ pipeline {
 		// changed
 		// unstable
 	}
-}
 
 // pipeline {
 //     agent { docker { image 'aditya626/hello-world-python:0.0.1.RELEASE'} }
